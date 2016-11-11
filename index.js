@@ -22,12 +22,12 @@ var allowCrossDomain = function(req, res, next) {
 }
 
 var dbConnection;
-mongoclient.connect(process.env.DB_URL, function(err, db) {
+/*mongoclient.connect(process.env.DB_URL, function(err, db) {
   assert.equal(null, err);
   console.log("Connected correctly to server.");
 
   dbConnection = db;
-});
+});*/
 
 cloudinary.config({
   cloud_name: 'syntactic-sugar-studio',

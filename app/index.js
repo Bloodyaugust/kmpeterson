@@ -1,13 +1,13 @@
 $(function () {
   var images = [];
 
-  fetch('/images')
+  /*fetch('/images')
   .then(function (resp) {
     return resp.json();
   })
   .then(function (json) {
     images = json.images;
-  });
+  });*/
 });
 
 viewCallbacks = {

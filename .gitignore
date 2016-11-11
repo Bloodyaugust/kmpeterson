@@ -3,3 +3,4 @@ bower_components
 public
 app/index.html
 *.sh
+npm-debug.log
