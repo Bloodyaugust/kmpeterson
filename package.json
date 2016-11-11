@@ -1,0 +1,49 @@
+{
+  "name": "kmpeterson",
+  "version": "0.0.0",
+  "description": "Code for the kmpeterson site.",
+  "main": "index.js",
+  "scripts": {
+    "start": "grunt dist && node index.js dist",
+    "postinstall": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bloodyaugust/kmpeterson.git"
+  },
+  "keywords": [
+    "site"
+  ],
+  "author": "Greyson Richey <greysonrichey@gmail.com> (http://synsugarstudio.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bloodyaugust/kmpeterson/issues"
+  },
+  "homepage": "https://github.com/Bloodyaugust/kmpeterson#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "bower": "^1.7.9",
+    "cloudinary": "^1.3.1",
+    "compression": "^1.6.1",
+    "datauri": "^1.0.4",
+    "express": "^4.13.4",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-express-server": "^0.5.3",
+    "grunt-include-source": "^0.7.1",
+    "grunt-sass": "^1.1.0",
+    "grunt-wiredep": "^3.0.1",
+    "mongodb": "^2.1.18",
+    "multer": "^1.1.0",
+    "mustache": "^2.2.1",
+    "node-fetch": "^1.5.1"
+  }
+}

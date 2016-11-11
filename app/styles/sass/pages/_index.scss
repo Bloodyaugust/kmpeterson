@@ -1,0 +1,61 @@
+body {
+  background-color: white;
+  color: white;
+  @include transition(background-color 1s ease);
+
+  &.loaded {
+    background-color: black;
+  }
+}
+header {
+  color: black;
+  visibility: hidden;
+  @include transition(color 1s ease);
+
+  img {
+    opacity: 0;
+    @include transition(opacity 1s ease);
+  }
+  &.show img {
+    opacity: 1;
+  }
+
+  &.show {
+    color: white;
+    visibility: visible;
+  }
+}
+
+.content {
+  opacity: 0;
+  @include transition(opacity .5s ease);
+
+  &.show {
+    opacity: 1;
+  }
+}
+.gallery-item {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid white;
+  border-radius: 4px;
+
+  img {
+    cursor: pointer;
+  }
+
+  .order {
+    @include button(#283593);
+  }
+}
+.nav-button {
+  @include button(#283593);
+}
+.tiny-space {
+  opacity: 0;
+  -webkit-backface-visibility: hidden;
+  @include transition(opacity 1s ease);
+
+  &.show {
+    opacity: 1;
+  }
+}

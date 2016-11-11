@@ -1,0 +1,106 @@
+body, html {
+  min-height: 100%;
+  min-width: 100%;
+}
+body {
+  background-color: white;
+  height: 100vh;
+  overflow-x: hidden;
+  text-align: center;
+  width: 100vw;
+}
+footer {
+  height: 2vh;
+  left: calc(50% - 10vw);
+  position: fixed;
+  text-align: center;
+  top: 98vh;
+  width: 20vw;
+  z-index: 2;
+  @include mobile() {
+    left: 0;
+    top: 98vh;
+    width: 100vw;
+  }
+
+  .admin {
+    cursor: pointer;
+    margin-left: 10px;
+    text-decoration: underline;
+  }
+}
+header {
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+  img {
+    margin-top: 50px;
+    max-height: 100px;
+    max-width: 100px;
+  }
+}
+
+section.content {
+  position: relative;
+  z-index: 2;
+}
+
+.button-wrapper {
+  width: 336px;
+  margin: 10px auto;
+}
+.gallery {
+  margin: 0 auto;
+  width: 80vw;
+  @include mobile() {
+    width: 100vw;
+  }
+
+  .gallery-item {
+    float: left;
+    height: 300px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    width: calc(25% - 64px);
+    @include mobile() {
+      width: calc(100% - 84px);
+    }
+
+    img {
+      height: 70%;
+      margin-top: 20px;
+      width: 70%;
+      @include transition(height .1s ease);
+      @include transition(left .1s ease);
+      @include transition(top .1s ease);
+      @include transition(width .1s ease);
+
+      &.expanded {
+        height: 90vh;
+        left: 5vw;
+        position: fixed;
+        top: 5vh;
+        width: 90vw;
+      }
+    }
+
+    .order {
+      margin-top: 20px;
+    }
+  }
+}
+.nav-button {
+  float: left;
+  margin-left: 10px;
+  width: 150px
+}
+.tiny-space {
+  position: fixed;
+  z-index: 1;
+}
