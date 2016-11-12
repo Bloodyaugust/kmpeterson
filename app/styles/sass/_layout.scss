@@ -43,9 +43,21 @@ header {
     max-width: 100px;
   }
 }
+nav {
+  padding-left: 10px;
+  position: absolute;
+  width: 50px;
+
+  .nav-item {
+    margin-top: 10px;
+  }
+}
 
 section.content {
+  float: right;
+  padding-right: 15px;
   position: relative;
+  width: calc(100% - 75px);
   z-index: 2;
 }
 
@@ -93,6 +105,15 @@ section.content {
     .order {
       margin-top: 20px;
     }
+  }
+}
+.image-container {
+  float: left;
+  margin: 10px;
+
+  img {
+    height: auto;
+    width: 100%;
   }
 }
 .nav-button {

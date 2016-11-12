@@ -75,14 +75,14 @@ module.exports = function(grunt) {
     includeHTMLPartials: {
       dev: {
         files: [{
-          cwd: 'public/',
+          cwd: 'app/',
           src: ['templates/*.html', '!templates/index.html'],
           dest: 'index.html'
         }]
       },
       dist: {
         files: [{
-          cwd: 'app/',
+          cwd: 'public/',
           src: ['templates/*.html', '!templates/index.html'],
           dest: 'index.html'
         }]

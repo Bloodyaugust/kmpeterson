@@ -1,0 +1,22 @@
+.image-container {
+  opacity: 0;
+  transform: translateY(100);
+  @include transition(transform .5s ease, opacity .5s ease);
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bricklayer-column-sizer {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .bricklayer-column-sizer {
+    width: 33.3%;
+  }
+}

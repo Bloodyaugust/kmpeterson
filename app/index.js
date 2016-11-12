@@ -1,20 +1,64 @@
 $(function () {
-  var images = [];
+  var images = [],
+    navItems = [];
 
-  /*fetch('/images')
+  fetch('/images')
   .then(function (resp) {
     return resp.json();
   })
   .then(function (json) {
     images = json.images;
-  });*/
+  });
+
+  navItems = $('.nav-item');
+
+  $('header').addClass('show');
+
+  $('.nav-item[data-template="about"]').click(function () {
+    setView('about');
+  });
+  $('.nav-item[data-template="contact"]').click(function () {
+    setView('contact');
+  });
+  $('.nav-item[data-template="gallery"]').click(function () {
+    setView('gallery', {images: images});
+  });
+  $('.nav-item[data-template="home"]').click(function () {
+    setView('home');
+  });
+
+  setTimeout(function () {
+    /* jshint loopfunc: true */
+    for (var i = 0; i < navItems.length; i++) {
+      (function (item, index) {
+        setTimeout(function () {
+          $(item).addClass('show');
+        }, index * 250);
+      })(navItems[i], i);
+    }
+  }, 1000);
 });
 
 viewCallbacks = {
   gallery: function () {
-    $('.gallery-item img').click(function (e) {
-      $(e.target).toggleClass('expanded');
-    });
+    var currentImageIndex = 0,
+      imageElements = $('.image-container');
+
+    var bricklayer = new Bricklayer(document.querySelector('.bricklayer'));
+
+    showNextImage = function () {
+      $(imageElements[currentImageIndex]).addClass('show');
+
+      if (currentImageIndex + 1 !== imageElements.length) {
+        currentImageIndex++;
+
+        setTimeout(function () {
+          showNextImage();
+        }, 250);
+      }
+    };
+
+    showNextImage();
   }
 };
 
@@ -30,4 +74,4 @@ function setView(view, data) {
       viewCallbacks[view]();
     }
   }, 500);
-};
+}

@@ -1,6 +1,6 @@
 body {
   background-color: white;
-  color: white;
+  color: black;
   @include transition(background-color 1s ease);
 
   &.loaded {
@@ -8,51 +8,36 @@ body {
   }
 }
 header {
-  color: black;
-  @include transition(color 1s ease);
-
-  img {
-    opacity: 0;
-    @include transition(opacity 1s ease);
-  }
-  &.show img {
-    opacity: 1;
-  }
+  opacity: 0;
+  @include transition(opacity 1.5s ease);
 
   &.show {
-    color: white;
-    visibility: visible;
+    opacity: 1;
+  }
+}
+nav {
+  color: black;
+  cursor: pointer;
+
+  :hover {
+    text-decoration: underline;
+  }
+
+  .nav-item {
+    opacity: 0;
+    transform: translateX(100px);
+    @include transition(transform .5s ease, opacity .5s ease);
+
+    &.show {
+      opacity: 1;
+      transform: translateX(0px);
+    }
   }
 }
 
 .content {
   opacity: 0;
   @include transition(opacity .5s ease);
-
-  &.show {
-    opacity: 1;
-  }
-}
-.gallery-item {
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 2px solid white;
-  border-radius: 4px;
-
-  img {
-    cursor: pointer;
-  }
-
-  .order {
-    @include button(#283593);
-  }
-}
-.nav-button {
-  @include button(#283593);
-}
-.tiny-space {
-  opacity: 0;
-  -webkit-backface-visibility: hidden;
-  @include transition(opacity 1s ease);
 
   &.show {
     opacity: 1;

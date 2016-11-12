@@ -1,7 +1,6 @@
 var compression = require('compression');
 var express = require('express');
 var fetch = require('node-fetch');
-var mongoclient = require('mongodb').MongoClient;
 var assert = require('assert');
 var bodyParser = require('body-parser');
 var multer = require('multer');
@@ -21,19 +20,13 @@ var allowCrossDomain = function(req, res, next) {
   next();
 }
 
-var dbConnection;
-/*mongoclient.connect(process.env.DB_URL, function(err, db) {
-  assert.equal(null, err);
-  console.log("Connected correctly to server.");
-
-  dbConnection = db;
-});*/
-
 cloudinary.config({
   cloud_name: 'syntactic-sugar-studio',
   api_key: process.env.CLOUDINARY_KEY,
   api_secret: process.env.CLOUDINARY_SECRET
 });
+
+console.log(cloudinary.url('kmp', {format: 'json', type: 'list'}));
 
 app.use(bodyParser.json());
 app.use(allowCrossDomain);
@@ -47,24 +40,24 @@ app.use('/bower_components', express.static('bower_components'));
 
 app.get('/images', function (req, res) {
   var start = parseInt(req.query.start) || 0,
-    limit = parseInt(req.query.limit) || 10,
-    cursor;
+    limit = parseInt(req.query.limit) || 10;
 
-  cursor = dbConnection.collection('images').find().skip(start).limit(limit);
-
-  cursor.toArray(function (err, result) {
-    if (err) {
-      res.json({
-        code: 500,
-        message: 'Error retrieving images'
-      });
-    } else {
+    fetch('http://res.cloudinary.com/syntactic-sugar-studio/image/list/kmp.json')
+    .then(function (resp) {
+      return resp.json();
+    })
+    .then(function (json) {
       res.json({
         code: 200,
-        images: result
+        images: json.resources
       });
-    }
-  });
+    })
+    .catch(function (error) {
+      res.json({
+        code: 500,
+        error: error
+      });
+    });
 });
 
 app.post('/images/upload', multer().single('space'), function (req, res) {

@@ -4,3 +4,4 @@ public
 app/index.html
 *.sh
 npm-debug.log
+.DS_Store
