@@ -42,7 +42,7 @@ $(function () {
 viewCallbacks = {
   gallery: function () {
     var currentImageIndex = 0,
-      imageElements = $('.image-container');
+      imageElements = $('.image-container img');
 
     var bricklayer = new Bricklayer(document.querySelector('.bricklayer'));
 
@@ -63,7 +63,18 @@ viewCallbacks = {
 };
 
 function setView(view, data) {
-  var $content = $('.content');
+  var $content = $('.content'),
+    $navItems = $('nav .nav-item'),
+    currentNavItem;
+
+  for (var i = 0; i < $navItems.length; i++) {
+    currentNavItem = $($navItems[i]);
+    if (currentNavItem.data().template === view) {
+      currentNavItem.addClass('active');
+    } else {
+      currentNavItem.removeClass('active');
+    }
+  }
 
   $content.removeClass('show');
   setTimeout(function () {

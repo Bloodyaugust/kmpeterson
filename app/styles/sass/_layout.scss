@@ -2,6 +2,7 @@ body, html {
   min-height: 100%;
   min-width: 100%;
 }
+
 body {
   background-color: white;
   height: 100vh;
@@ -9,6 +10,7 @@ body {
   text-align: center;
   width: 100vw;
 }
+
 footer {
   height: 2vh;
   left: calc(50% - 10vw);
@@ -29,6 +31,7 @@ footer {
     text-decoration: underline;
   }
 }
+
 header {
   margin: 0 auto;
   position: relative;
@@ -43,6 +46,7 @@ header {
     max-width: 100px;
   }
 }
+
 nav {
   padding-left: 10px;
   position: absolute;
@@ -61,52 +65,14 @@ section.content {
   z-index: 2;
 }
 
-.button-wrapper {
-  width: 336px;
-  margin: 10px auto;
-}
 .gallery {
   margin: 0 auto;
   width: 80vw;
   @include mobile() {
-    width: 100vw;
-  }
-
-  .gallery-item {
-    float: left;
-    height: 300px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-top: 20px;
-    padding: 20px;
-    width: calc(25% - 64px);
-    @include mobile() {
-      width: calc(100% - 84px);
-    }
-
-    img {
-      height: 70%;
-      margin-top: 20px;
-      width: 70%;
-      @include transition(height .1s ease);
-      @include transition(left .1s ease);
-      @include transition(top .1s ease);
-      @include transition(width .1s ease);
-
-      &.expanded {
-        height: 90vh;
-        left: 5vw;
-        position: fixed;
-        top: 5vh;
-        width: 90vw;
-      }
-    }
-
-    .order {
-      margin-top: 20px;
-    }
+    width: calc(100vw - 60px);
   }
 }
+
 .image-container {
   float: left;
   margin: 10px;
@@ -116,12 +82,9 @@ section.content {
     width: 100%;
   }
 }
-.nav-button {
-  float: left;
-  margin-left: 10px;
-  width: 150px
-}
-.tiny-space {
-  position: fixed;
-  z-index: 1;
+
+@media screen and (min-width: 1000px) {
+  .bricklayer-column-sizer {
+    width: 33.3%;
+  }
 }

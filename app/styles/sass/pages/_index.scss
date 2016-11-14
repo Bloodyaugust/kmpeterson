@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: #F5F5F5;
   color: black;
   @include transition(background-color 1s ease);
 
@@ -7,6 +7,7 @@ body {
     background-color: black;
   }
 }
+
 header {
   opacity: 0;
   @include transition(opacity 1.5s ease);
@@ -15,6 +16,7 @@ header {
     opacity: 1;
   }
 }
+
 nav {
   color: black;
   cursor: pointer;
@@ -28,6 +30,9 @@ nav {
     transform: translateX(100px);
     @include transition(transform .5s ease, opacity .5s ease);
 
+    &.active {
+      text-decoration: underline;
+    }
     &.show {
       opacity: 1;
       transform: translateX(0px);

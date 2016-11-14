@@ -5,19 +5,28 @@
 
 h1 {
   @include font-size(108px);
+
+  @include mobile() {
+    @include font-size(80px);
+  }
 }
+
 h2 {
   @include font-size(22px);
 }
+
 h3 {
   @include font-size(22px);
 }
+
 h4 {
   @include font-size(18px);
 }
+
 h5 {
   @include font-size(14px);
 }
+
 h6 {
   @include font-size(12px);
 }
@@ -29,9 +38,11 @@ nav {
 .nav-button {
   @include font-size(22px);
 }
+
 .nav-item {
   @include font-size(18px);
 }
+
 .gallery-item {
   .name {
     @include font-size(22px);
