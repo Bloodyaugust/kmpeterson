@@ -65,7 +65,11 @@ section.content {
   z-index: 2;
 }
 
-.gallery {
+.bricklayer-column {
+  padding: 0;
+}
+
+.gallery, .metalworking, .collaborations {
   margin: 0 auto;
   width: 80vw;
   @include mobile() {
@@ -76,6 +80,7 @@ section.content {
 .image-container {
   float: left;
   margin: 10px;
+  min-height: 200px;
 
   img {
     height: auto;

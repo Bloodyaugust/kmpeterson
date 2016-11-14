@@ -32,7 +32,12 @@ h6 {
 }
 
 nav {
+  text-align: left;
   @include font-size(18px);
+
+  :hover {
+    text-decoration: underline;
+  }
 }
 
 .nav-button {

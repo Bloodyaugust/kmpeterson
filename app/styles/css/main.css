@@ -82,16 +82,20 @@ section.content {
   width: calc(100% - 75px);
   z-index: 2; }
 
-.gallery {
+.bricklayer-column {
+  padding: 0; }
+
+.gallery, .metalworking, .collaborations {
   margin: 0 auto;
   width: 80vw; }
   @media (max-width: 767px) {
-    .gallery {
+    .gallery, .metalworking, .collaborations {
       width: calc(100vw - 60px); } }
 
 .image-container {
   float: left;
-  margin: 10px; }
+  margin: 10px;
+  min-height: 200px; }
   .image-container img {
     height: auto;
     width: 100%; }
@@ -134,8 +138,11 @@ h6 {
   font-size: 0.75rem; }
 
 nav {
+  text-align: left;
   font-size: 18px;
   font-size: 1.125rem; }
+  nav :hover {
+    text-decoration: underline; }
 
 .nav-button {
   font-size: 22px;
@@ -164,7 +171,7 @@ nav {
     color: green; }
 
 body {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   color: black;
   -webkit-transition: background-color 1s ease;
   -moz-transition: background-color 1s ease;
@@ -187,8 +194,6 @@ header {
 nav {
   color: black;
   cursor: pointer; }
-  nav :hover {
-    text-decoration: underline; }
   nav .nav-item {
     opacity: 0;
     transform: translateX(100px);
@@ -216,6 +221,7 @@ nav {
 .image-container img {
   box-shadow: 0 4px 8px 0 #BDBDBD, 0 6px 20px 0 #BDBDBD;
   opacity: 0;
+  position: relative;
   transform: translateY(100px);
   -webkit-transition: transform 0.5s ease, opacity 0.5s ease;
   -moz-transition: transform 0.5s ease, opacity 0.5s ease;

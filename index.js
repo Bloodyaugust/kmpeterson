@@ -42,7 +42,7 @@ app.get('/images', function (req, res) {
   var start = parseInt(req.query.start) || 0,
     limit = parseInt(req.query.limit) || 10;
 
-    fetch('http://res.cloudinary.com/syntactic-sugar-studio/image/list/kmp.json')
+    fetch('http://res.cloudinary.com/syntactic-sugar-studio/image/list/' + req.query.tag + '.json')
     .then(function (resp) {
       return resp.json();
     })
@@ -58,31 +58,6 @@ app.get('/images', function (req, res) {
         error: error
       });
     });
-});
-
-app.post('/images/upload', multer().single('space'), function (req, res) {
-  var base64Image = new datauri();
-
-  base64Image.format(req.file.originalname.split('.')[1], req.file.buffer);
-
-  cloudinary.uploader.upload(base64Image.content, function (result) {
-    if (result.secure_url) {
-      dbConnection.collection('images').save({
-        url: result.secure_url,
-        created: new Date()
-      });
-
-      res.json({
-        code: 200,
-        message: 'Image upload successful'
-      });
-    } else {
-      res.json({
-        code: 500,
-        message: 'Image upload failed'
-      });
-    }
-  });
 });
 
 app.listen(port, function () {

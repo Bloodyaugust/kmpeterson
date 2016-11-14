@@ -1,13 +1,31 @@
 $(function () {
-  var images = [],
+  var galleryImages = [],
+    collaborationImages = [],
+    metalworkingImages = [],
     navItems = [];
 
-  fetch('/images')
+  fetch('/images?tag=kmp')
   .then(function (resp) {
     return resp.json();
   })
   .then(function (json) {
-    images = json.images;
+    galleryImages = json.images;
+  });
+
+  fetch('/images?tag=kmp-metalworking')
+  .then(function (resp) {
+    return resp.json();
+  })
+  .then(function (json) {
+    metalworkingImages = json.images;
+  });
+
+  fetch('/images?tag=kmp-collaboration')
+  .then(function (resp) {
+    return resp.json();
+  })
+  .then(function (json) {
+    collaborationImages = json.images;
   });
 
   navItems = $('.nav-item');
@@ -17,14 +35,20 @@ $(function () {
   $('.nav-item[data-template="about"]').click(function () {
     setView('about');
   });
+  $('.nav-item[data-template="collaborations"]').click(function () {
+    setView('collaborations', {images: collaborationImages});
+  });
   $('.nav-item[data-template="contact"]').click(function () {
     setView('contact');
   });
   $('.nav-item[data-template="gallery"]').click(function () {
-    setView('gallery', {images: images});
+    setView('gallery', {images: galleryImages});
   });
   $('.nav-item[data-template="home"]').click(function () {
     setView('home');
+  });
+  $('.nav-item[data-template="metalworking"]').click(function () {
+    setView('metalworking', {images: metalworkingImages});
   });
 
   setTimeout(function () {
@@ -40,7 +64,47 @@ $(function () {
 });
 
 viewCallbacks = {
+  collaborations: function () {
+    var currentImageIndex = 0,
+      imageElements = $('.image-container img');
+
+    var bricklayer = new Bricklayer(document.querySelector('.bricklayer'));
+
+    showNextImage = function () {
+      $(imageElements[currentImageIndex]).addClass('show');
+
+      if (currentImageIndex + 1 !== imageElements.length) {
+        currentImageIndex++;
+
+        setTimeout(function () {
+          showNextImage();
+        }, 250);
+      }
+    };
+
+    showNextImage();
+  },
   gallery: function () {
+    var currentImageIndex = 0,
+      imageElements = $('.image-container img');
+
+    var bricklayer = new Bricklayer(document.querySelector('.bricklayer'));
+
+    showNextImage = function () {
+      $(imageElements[currentImageIndex]).addClass('show');
+
+      if (currentImageIndex + 1 !== imageElements.length) {
+        currentImageIndex++;
+
+        setTimeout(function () {
+          showNextImage();
+        }, 250);
+      }
+    };
+
+    showNextImage();
+  },
+  metalworking: function () {
     var currentImageIndex = 0,
       imageElements = $('.image-container img');
 
