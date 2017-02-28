@@ -50,10 +50,12 @@ header {
 nav {
   padding-left: 10px;
   position: absolute;
-  width: 50px;
+  width: auto;
 
   .nav-item {
+    display: block;
     margin-top: 10px;
+    text-decoration: none;
   }
 }
 
@@ -69,7 +71,7 @@ section.content {
   padding: 0;
 }
 
-.gallery, .metalworking, .collaborations {
+.gallery, .metalworking, .collaborations, .home {
   margin: 0 auto;
   width: 80vw;
   @include mobile() {
@@ -81,6 +83,7 @@ section.content {
   float: left;
   margin: 10px;
   min-height: 200px;
+  width: calc(100% - 20px);
 
   img {
     height: auto;
@@ -90,6 +93,6 @@ section.content {
 
 @media screen and (min-width: 1000px) {
   .bricklayer-column-sizer {
-    width: 33.3%;
+    width: 25%;
   }
 }

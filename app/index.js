@@ -2,7 +2,8 @@ $(function () {
   var galleryImages = [],
     collaborationImages = [],
     metalworkingImages = [],
-    navItems = [];
+    navItems = [],
+    pageHash = window.location.hash;
 
   fetch('/images?tag=kmp')
   .then(function (resp) {
@@ -10,6 +11,10 @@ $(function () {
   })
   .then(function (json) {
     galleryImages = json.images;
+
+    if (pageHash === '#gallery') {
+      setView('gallery', {images: galleryImages});
+    }
   });
 
   fetch('/images?tag=kmp-metalworking')
@@ -18,6 +23,10 @@ $(function () {
   })
   .then(function (json) {
     metalworkingImages = json.images;
+
+    if (pageHash === '#metalworking') {
+      setView('metalworking', {images: metalworkingImages});
+    }
   });
 
   fetch('/images?tag=kmp-collaboration')
@@ -26,6 +35,10 @@ $(function () {
   })
   .then(function (json) {
     collaborationImages = json.images;
+
+    if (pageHash === '#collaborations') {
+      setView('collaborations', {images: collaborationImages});
+    }
   });
 
   navItems = $('.nav-item');
@@ -61,6 +74,28 @@ $(function () {
       })(navItems[i], i);
     }
   }, 1000);
+
+  if (!pageHash) {
+    setView('home', {});
+    window.location.hash = 'home';
+  } else {
+    switch (pageHash) {
+      case '#collaborations':
+        setView('collaborations', {images: collaborationImages});
+        break;
+      case '#contact':
+        setView('contact', {});
+        break;
+      case '#gallery':
+        setView('gallery', {images: galleryImages});
+        break;
+      case '#metalworking':
+        setView('metalworking', {images: metalworkingImages});
+        break;
+      default:
+        setView('home', {});
+    }
+  }
 });
 
 viewCallbacks = {

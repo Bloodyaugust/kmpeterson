@@ -38,6 +38,16 @@ nav {
   :hover {
     text-decoration: underline;
   }
+
+  a {
+    color: black !important;
+  }
+}
+
+p {
+  line-height: 1.5;
+
+  @include font-size(20px);
 }
 
 .nav-button {

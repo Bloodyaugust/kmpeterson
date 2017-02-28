@@ -71,9 +71,11 @@ header {
 nav {
   padding-left: 10px;
   position: absolute;
-  width: 50px; }
+  width: auto; }
   nav .nav-item {
-    margin-top: 10px; }
+    display: block;
+    margin-top: 10px;
+    text-decoration: none; }
 
 section.content {
   float: right;
@@ -85,24 +87,25 @@ section.content {
 .bricklayer-column {
   padding: 0; }
 
-.gallery, .metalworking, .collaborations {
+.gallery, .metalworking, .collaborations, .home {
   margin: 0 auto;
   width: 80vw; }
   @media (max-width: 767px) {
-    .gallery, .metalworking, .collaborations {
+    .gallery, .metalworking, .collaborations, .home {
       width: calc(100vw - 60px); } }
 
 .image-container {
   float: left;
   margin: 10px;
-  min-height: 200px; }
+  min-height: 200px;
+  width: calc(100% - 20px); }
   .image-container img {
     height: auto;
     width: 100%; }
 
 @media screen and (min-width: 1000px) {
   .bricklayer-column-sizer {
-    width: 33.3%; } }
+    width: 25%; } }
 
 * {
   font-family: 'Oswald', sans-serif;
@@ -143,6 +146,13 @@ nav {
   font-size: 1.125rem; }
   nav :hover {
     text-decoration: underline; }
+  nav a {
+    color: black !important; }
+
+p {
+  line-height: 1.5;
+  font-size: 20px;
+  font-size: 1.25rem; }
 
 .nav-button {
   font-size: 22px;

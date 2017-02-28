@@ -38,7 +38,7 @@ nav {
 
 .content {
   opacity: 0;
-  @include transition(opacity .5s ease);
+  @include transition(opacity 0.5s ease);
 
   &.show {
     opacity: 1;
